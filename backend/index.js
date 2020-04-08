@@ -20,6 +20,7 @@ app.use((req, res, next) => {
 app.options('/*',(req, res, next) => res.send());
 //app.use('/products', productsRouter);
 app.use('/categories', categoriesRouter);
+app.use('/products', productsRouter);
 //app.use('/orders', ordersRouter);
 //app.use('/users', usersRouter);
 
