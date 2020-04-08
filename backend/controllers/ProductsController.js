@@ -6,8 +6,12 @@ const Op = Sequelize.Op;
 
 const ProductsController = {
     getAll(req, res) {
-        Category.findAll()
-            .then(products => res.send(products))
+        Product.findAll({
+            include: [Category],
+            order: [
+                ['name', 'ASC']
+            ]
+        })
     },
     getByPK(req, res) {
         Products.findAll({
