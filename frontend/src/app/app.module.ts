@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData, CommonModule } from '@angular/common';
 import es from '@angular/common/locales/es';
+import { AdminProductsComponent } from './containers/admin-products/admin-products.component';
 
 registerLocaleData(es);
 
@@ -22,7 +23,8 @@ registerLocaleData(es);
     HeaderComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AdminProductsComponent
   ],
   imports: [
     BrowserModule,

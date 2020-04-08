@@ -127,12 +127,8 @@
       }
     }
   },
-<<<<<<< HEAD
   "defaultProject": "autos",
   "cli": {
     "analytics": false
   }
-=======
-  "defaultProject": "autos"
->>>>>>> 218ca34fa887b943c804c78783c8c98fa53f74c2
 }
