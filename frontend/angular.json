@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -92,6 +93,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -125,8 +127,12 @@
       }
     }
   },
+<<<<<<< HEAD
   "defaultProject": "autos",
   "cli": {
     "analytics": false
   }
+=======
+  "defaultProject": "autos"
+>>>>>>> 218ca34fa887b943c804c78783c8c98fa53f74c2
 }

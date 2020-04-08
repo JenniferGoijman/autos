@@ -1,0 +1,47 @@
+@import '../../colors.scss';
+
+header {
+  height: fit-content;
+  background: $colorBlack;
+
+  .logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    margin: 8px 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: left;
+    background-color: $colorWhite;
+
+    img {
+        height: 40px;
+      }
+  }
+  
+  ul {
+    display: flex;
+    align-items: center;
+  }
+
+  [nz-menu] {
+    line-height: 64px;
+    background: $colorBlack;
+    color: $colorWhite;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15);
+  }
+
+}
+
+.ant-menu-horizontal>.ant-menu-item-active,
+.ant-menu-horizontal>.ant-menu-item-open,
+.ant-menu-horizontal>.ant-menu-item-selected,
+.ant-menu-horizontal>.ant-menu-item:hover,
+.ant-menu-horizontal>.ant-menu-submenu-active,
+.ant-menu-horizontal>.ant-menu-submenu-open,
+.ant-menu-horizontal>.ant-menu-submenu-selected,
+.ant-menu-horizontal>.ant-menu-submenu:hover {
+  color: $colorRed;
+  border-bottom: $colorRed;
+}
