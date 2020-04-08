@@ -1,14 +1,15 @@
 <div class="container">
   <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+    <h1>Iniciar sesión</h1>
     <nz-form-item>
-      <nz-form-control nzErrorTip="Please input your username!">
+      <nz-form-control nzErrorTip="Ingrese su nombre de usuario!">
         <nz-input-group nzPrefixIcon="user">
           <input type="text" nz-input formControlName="userName" placeholder="Username" />
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-control nzErrorTip="Please input your Password!">
+      <nz-form-control nzErrorTip="Ingrese su contraseña!">
         <nz-input-group nzPrefixIcon="lock">
           <input type="password" nz-input formControlName="password" placeholder="Password" />
         </nz-input-group>
@@ -17,12 +18,12 @@
     <nz-form-item>
       <nz-form-control>
         <label nz-checkbox formControlName="remember">
-          <span>Remember me</span>
+          <span>Recordar</span>
         </label>
-        <a class="login-form-forgot" class="login-form-forgot">Forgot password</a>
-        <button nz-button class="login-form-button" [nzType]="'primary'">Log in</button>
-        Or
-        <a>register now!</a>
+        <a class="login-form-forgot" class="login-form-forgot">Olvidé la contraseña</a>
+        <button nz-button class="login-form-button" [nzType]="'primary'">Entrar</button>
+        O
+        <a>registrarme ahora!</a>
       </nz-form-control>
     </nz-form-item>
   </form>
