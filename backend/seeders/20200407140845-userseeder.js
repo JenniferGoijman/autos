@@ -10,17 +10,23 @@ module.exports = {
     return queryInterface.bulkInsert('Users', [{
         name: 'John Doe',
         email: 'john@doe.es',
-        password: 'johndoe'
+        password: 'johndoe',
+        createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
+        updatedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
       {
         name: 'Jenny',
         email: 'jgoijman@gmail.com',
-        password: '123'
+        password: '123',
+        createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
+        updatedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
       }, 
       {
         name: 'Alex',
         email: 'alex@gmail.com',
-        password: '123'
+        password: '123',
+        createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
+        updatedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
       }
     ], {});
     /*
