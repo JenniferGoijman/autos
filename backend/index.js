@@ -1,9 +1,9 @@
-const express = require('/express');
+const express = require('express');
 const morgan = require('morgan');
 const app = express();
 const PORT = 3000;
 
-//const productsRouter = require('./routes/products');
+const productsRouter = require('./routes/products');
 const categoriesRouter = require('./routes/categories');
 //const ordersRouter = require('./routes/orders');
 //const usersRouter = require('./routes/users');
@@ -18,7 +18,7 @@ app.use((req, res, next) => {
     next();
 });
 app.options('/*',(req, res, next) => res.send());
-//app.use('/products', productsRouter);
+app.use('/products', productsRouter);
 app.use('/categories', categoriesRouter);
 app.use('/products', productsRouter);
 //app.use('/orders', ordersRouter);
