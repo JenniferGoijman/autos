@@ -44,6 +44,7 @@ const ProductController = {
                 message: 'Producto creado con éxito'
             }))
             .catch(err => res.send({
+                err,
                 message: 'Hubo un problema para crear el producto'
             }))
     },

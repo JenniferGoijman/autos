@@ -1,11 +1,11 @@
 const router = require('express').Router();
 const OrderController = require('../controllers/OrderController.js');
 
-router.get('/', OrderControlle.getAll);
-router.get('/:categoryId', OrderControlle.getByPK);
-router.get('/byQuery/:query', OrderControlle.getByQuery);
-router.post('/', OrderControlle.insert)
-router.put('/:id', OrderControlle.modify);
-router.delete('/:id', OrderControlle.delete);
+router.get('/', OrderController.getAll);
+router.get('/:categoryId', OrderController.getByPK);
+router.get('/byQuery/:query', OrderController.getByQuery);
+router.post('/', OrderController.insert)
+router.put('/:id', OrderController.modify);
+router.delete('/:id', OrderController.delete);
 
 module.exports = router;
