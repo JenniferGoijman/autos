@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     reference: DataTypes.STRING,
     price: DataTypes.INTEGER,
     image: DataTypes.STRING,
-    category: DataTypes.INTEGER
+    CategoryId: DataTypes.INTEGER
   }, {});
   Product.associate = function(models) {
     Product.belongsTo(models.Category);
