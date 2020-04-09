@@ -1,82 +1,82 @@
 const {
-    Product,
+    Order,
     Category,
     Sequelize
 } = require('../models/index.js');
 const Op = Sequelize.Op;
 
-const ProductsController = {
+const OrdersController = {
     getAll(req, res) {
-        Product.findAll({
-                include: [Category]
+        Order.findAll({
+                include: [Order]
             })
-            .then(products => res.send(products))
+            .then(orders => res.send(orders))
     },
     getByPK(req, res) {
-        Product.findAll({
+        Order.findAll({
                 where: {
-                    id: req.params.productId
+                    id: req.params.orderId
                 }
             })
-            .then(products => res.send(products))
+            .then(orders => res.send(orders))
     },
     getByQuery(req, res) {
-        Product.findAll({
+        Order.findAll({
                 where: {
                     name: {
                         [Op.like]: '%' + req.params.query + '%'
                     }
                 }
             })
-            .then(products => res.send(products))
+            .then(orders => res.send(orders))
     },
     getByCategory(req, res) {
         //hacer un findall y que me traiga los que tienen categoryid == al id que le paso
-
+        
     }, //Falta hacer
 
     insert(req, res) {
-        Product.create({
+        Order.create({
                 ...req.body
             })
-            .then(products => res.send({
-                products,
-                message: 'Producto creado con éxito'
+            .then(orders => res.send({
+                orders,
+                message: 'Pedido creado con éxito'
             }))
             .catch(err => res.send({
-                message: 'Hubo un problema para crear el producto'
+                message: 'Hubo un problema para crear el pedido'
             }))
     },
     modify(req, res) {
-        Product.update({
+        Order.update({
                 ...req.body
             }, {
                 where: {
                     id: req.params.id
                 }
             })
-            .then(products => res.send({
-                products,
-                message: 'Producto modificado con éxito'
+            .then(orders => res.send({
+                orders,
+                message: 'Pedido modificado con éxito'
             }))
             .catch(err => res.send({
-                message: 'Hubo un problema para modificar el producto'
+                message: 'Hubo un problema para modificar el Pedido'
             }))
     },
     delete(req, res) {
-        Product.destroy({
+        Order.destroy({
                 where: {
                     id: req.params.id
                 }
             })
-            .then(products => res.send({
-                products,
-                message: 'Producto eliminado con éxito'
+            .then(orders => res.send({
+                orders,
+                message: 'Pedido eliminado con éxito'
             }))
             .catch(err => res.send({
-                message: 'Hubo un problema para eliminar el producto'
+                message: 'Hubo un problema para eliminar el pedido'
             }))
     }
 }
 
-module.exports = ProductController;
+module.exports = OrderController;
