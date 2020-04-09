@@ -1,14 +1,14 @@
 const {
     Order,
-    Category,
+    Product,
     Sequelize
 } = require('../models/index.js');
 const Op = Sequelize.Op;
 
-const OrdersController = {
+const OrderController = {
     getAll(req, res) {
         Order.findAll({
-                include: [Order]
+                include: [Product]
             })
             .then(orders => res.send(orders))
     },

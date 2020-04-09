@@ -7,11 +7,12 @@ module.exports = (sequelize, DataTypes) => {
     image: DataTypes.STRING,
     CategoryId: DataTypes.INTEGER
   }, {});
-  Product.associate = function(models) {
+  Product.associate = function (models) {
     Product.belongsTo(models.Category);
-    // Product.belongsToMany(models.Order, {
-    //   through: models.OrderProduct
-    // });
+    Product.belongsToMany(models.Order, {
+      through: models.OrderProduct
+    });
+
   };
   return Product;
 };

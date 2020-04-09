@@ -5,7 +5,7 @@ const {
 } = require('../models/index.js');
 const Op = Sequelize.Op;
 
-const ProductsController = {
+const ProductController = {
     getAll(req, res) {
         Product.findAll({
                 include: [Category]
