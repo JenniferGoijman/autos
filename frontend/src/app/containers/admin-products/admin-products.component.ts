@@ -6,6 +6,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Router } from '@angular/router';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-admin-products',
@@ -14,14 +15,20 @@ import { Router } from '@angular/router';
 })
 export class AdminProductsComponent implements OnInit {
   public products;
+  public categories;
   public message: string;
   public validateForm: FormGroup;
   public router: Router;
 
-  constructor(public productService: ProductService, private fb: FormBuilder, private notification: NzNotificationService) { }
+  constructor(public productService: ProductService, 
+    public categoryService:CategoryService,
+    private fb: FormBuilder, 
+    private notification: NzNotificationService) { }
 
   ngOnInit(): void {
     this.getAll();
+    this.categoriesGetAll();    
+    
     this.validateForm = this.fb.group({
       name: [null, [Validators.required]],
       reference: [null, [Validators.required]],
@@ -34,6 +41,12 @@ export class AdminProductsComponent implements OnInit {
   getAll() {
     this.productService.getAll()
       .subscribe(res => { this.products = res; },
+        error => console.error(error));
+  }
+
+  categoriesGetAll() {
+    this.categoryService.getAll()
+      .subscribe(res => { this.categories = res; },
         error => console.error(error));
   }
 
@@ -59,7 +72,6 @@ export class AdminProductsComponent implements OnInit {
     }
     if (this.validateForm.valid) {
       const product = this.validateForm.value;
-      console.log(product)
       this.productService.insert(product)
         .subscribe(
           (res: HttpResponse<object>) => {

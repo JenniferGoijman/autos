@@ -1,0 +1,37 @@
+
+<div class="container">
+    <div class="table">
+        <nz-table #basicTable [nzData]="categories">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let category of categories">
+                    <td>{{ category.name }}</td>
+                    <td>
+                        <a>Editar</a> /
+                        <a (click)="deleteCategory(category.id)">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </div>
+
+    <div class="table">
+        <h2>Nuevo producto</h2>
+        <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Ingrese el nombre de la categoria!">
+                    <nz-input-group>
+                        <input type="text" nz-input formControlName="name" placeholder="Nombre" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <button nz-button class="login-form-button" [nzType]="'primary'">Entrar</button>
+            </nz-form-item>
+        </form>
+    </div>
+</div>

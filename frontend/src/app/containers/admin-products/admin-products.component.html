@@ -62,9 +62,7 @@
             <nz-form-item>
                 <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Seleccione una categoría"
                     formControlName="CategoryId">
-                    <nz-option nzLabel="Jack" nzValue="1">Lucy</nz-option>
-                    <nz-option nzLabel="Lucy" nzValue="2">Tom</nz-option>
-                    <nz-option nzLabel="Tom" nzValue="3">John</nz-option>
+                    <nz-option *ngFor="let category of categories" nzLabel={{category.name}} nzValue={{category.id}}></nz-option>
                 </nz-select>
             </nz-form-item>
             <nz-form-item>
@@ -72,10 +70,6 @@
             </nz-form-item>
         </form>
     </div>
-</div>
-
-<div class="container">
-
 </div>
 
 {{this.validateForm.value | json}}
