@@ -14,18 +14,19 @@ const OrderController = {
         },
         getByPK(req, res) {
             Order.findAll({
+                    include: [Product], 
                     where: {
                         id: req.params.orderId
                     }
                 })
                 .then(orders => res.send(orders))
         },
-        getByQuery(req, res) {
+        getByUser(req, res) {
             Order.findAll({
+                    include: [Product],
                     where: {
-                        name: {
-                            [Op.like]: '%' + req.params.query + '%'
-                        }
+                        UserId: 
+                        req.params.userId
                     }
                 })
                 .then(orders => res.send(orders))
@@ -60,7 +61,7 @@ const OrderController = {
         },
                     modify(req, res) {
                         Order.update({
-                                ...req.body
+                             status:req.body.status,
                             }, {
                                 where: {
                                     id: req.params.id

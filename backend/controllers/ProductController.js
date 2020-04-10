@@ -32,7 +32,13 @@ const ProductController = {
     },
     getByCategory(req, res) {
         //hacer un findall y que me traiga los que tienen categoryid == al id que le paso
-
+        Product.findAll({
+                    include: [Category],
+            where:{
+                CategoryId: req.params.categoryId
+            }
+        })
+            .then(products => res.send(products))
     }, //Falta hacer
 
     insert(req, res) {
