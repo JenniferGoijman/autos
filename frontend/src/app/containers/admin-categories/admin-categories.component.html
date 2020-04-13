@@ -11,7 +11,7 @@
                 <tr *ngFor="let category of categories">
                     <td>{{ category.name }}</td>
                     <td>
-                        <a>Editar</a> /
+                        <a (click)="editCategory(category)">Editar</a> /
                         <a (click)="deleteCategory(category.id)">Eliminar</a>
                     </td>
                 </tr>
@@ -20,7 +20,7 @@
     </div>
 
     <div class="table">
-        <h2>Nuevo producto</h2>
+        <h2>Categoria</h2>
         <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
             <nz-form-item>
                 <nz-form-control nzErrorTip="Ingrese el nombre de la categoria!">

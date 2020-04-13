@@ -5,10 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "concurrently \"npm run start:front\" \"npm run start:back\" ",
-    "start:back":"cd backend && nodemon index.js",
-    "start:front":"cd frontend && ng serve --open"
+    "start:back": "cd backend && nodemon index.js",
+    "start:front": "cd frontend && ng serve --open"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "ng-zorro-antd": "^8.5.2"
+  }
 }

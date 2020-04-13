@@ -31,7 +31,6 @@ const ProductController = {
             .then(products => res.send(products))
     },
     getByCategory(req, res) {
-        //hacer un findall y que me traiga los que tienen categoryid == al id que le paso
         Product.findAll({
                     include: [Category],
             where:{
@@ -39,7 +38,7 @@ const ProductController = {
             }
         })
             .then(products => res.send(products))
-    }, //Falta hacer
+    },
 
     insert(req, res) {
         Product.create({
@@ -49,7 +48,7 @@ const ProductController = {
                 products,
                 message: 'Producto creado con éxito'
             }))
-            .catch(err => res.send({
+            .catch(err => res.status(500).send({
                 err,
                 message: 'Hubo un problema para crear el producto'
             }))
@@ -66,7 +65,7 @@ const ProductController = {
                 products,
                 message: 'Producto modificado con éxito'
             }))
-            .catch(err => res.send({
+            .catch(err => res.status(500).send({ err,
                 message: 'Hubo un problema para modificar el producto'
             }))
     },

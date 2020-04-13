@@ -20,8 +20,9 @@
                     <td><img src={{product.image}} class="productImage" alt="..." *ngIf="product.image"></td>
                     <td>{{ product.Category.name }}</td>
                     <td>
-                        <a>Editar</a> /
+                        <a (click)="editProduct(product)">Editar</a> /
                         <a (click)="deleteProduct(product.id)">Eliminar</a>
+                        
                     </td>
                 </tr>
             </tbody>
@@ -29,7 +30,7 @@
     </div>
 
     <div class="table">
-        <h2>Nuevo producto</h2>
+        <h2>Producto</h2>
         <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
             <nz-form-item>
                 <nz-form-control nzErrorTip="Ingrese el nombre del producto!">
@@ -62,7 +63,7 @@
             <nz-form-item>
                 <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Seleccione una categoría"
                     formControlName="CategoryId">
-                    <nz-option *ngFor="let category of categories" nzLabel={{category.name}} nzValue={{category.id}}></nz-option>
+                    <nz-option *ngFor="let category of this.categories" nzLabel={{category.name}} [nzValue]=+category.id></nz-option>
                 </nz-select>
             </nz-form-item>
             <nz-form-item>
@@ -72,4 +73,4 @@
     </div>
 </div>
 
-{{this.validateForm.value | json}}
+{{this.validateForm.value| json}}

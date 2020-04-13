@@ -16,19 +16,20 @@ import { CategoryService } from 'src/app/services/category.service';
 export class AdminProductsComponent implements OnInit {
   public products;
   public categories;
+  public product = { id: 0, name: '', reference: '', price: 0, image: '', CategoryId: '' }
   public message: string;
   public validateForm: FormGroup;
-  public router: Router;
 
-  constructor(public productService: ProductService, 
-    public categoryService:CategoryService,
-    private fb: FormBuilder, 
+  constructor(public productService: ProductService,
+    public categoryService: CategoryService,
+    private router: Router,
+    private fb: FormBuilder,
     private notification: NzNotificationService) { }
 
   ngOnInit(): void {
     this.getAll();
-    this.categoriesGetAll();    
-    
+    this.categoriesGetAll();
+
     this.validateForm = this.fb.group({
       name: [null, [Validators.required]],
       reference: [null, [Validators.required]],
@@ -65,23 +66,53 @@ export class AdminProductsComponent implements OnInit {
       )
   }
 
+  editProduct(product) {
+    this.validateForm = this.fb.group({ 
+      name: [product.name, [Validators.required]],
+      reference: [product.reference, [Validators.required]],
+      price: [product.price, [Validators.required]],
+      image: [product.image, ],
+      CategoryId: [product.Category.id, [Validators.required]]
+    })
+    this.product.id = product.id;
+  }
+
   submitForm(): void {
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
     if (this.validateForm.valid) {
-      const product = this.validateForm.value;
-      this.productService.insert(product)
-        .subscribe(
-          (res: HttpResponse<object>) => {
-            this.notification.success('Producto creado con éxito', res['message']);
-            setTimeout(() => {this.router.navigate(['login'])}, 2500);
-          },
-          (error: HttpErrorResponse) => {
-            this.notification.error('Problema al crear el producto', error['error']['message']);
-          }
-        )
+      this.product.name = this.validateForm.value.name;
+      this.product.reference = this.validateForm.value.reference;
+      this.product.price = this.validateForm.value.price;
+      this.product.image = this.validateForm.value.image;
+      this.product.CategoryId = this.validateForm.value.CategoryId;
+      if (this.product.id != 0) {
+        console.log(this.product)
+        this.productService.update(this.product)
+          .subscribe(
+            (res: HttpResponse<object>) => {
+              this.notification.success('Producto modificado con éxito', res['message']);
+              this.getAll();
+            },
+            (error: HttpErrorResponse) => {
+              this.notification.error('Problema al modificar el producto', error['error']['message']);
+            }
+          )
+      } else {
+        this.productService.insert(this.validateForm.value)
+          .subscribe(
+            (res: HttpResponse<object>) => {
+              this.notification.success('Producto creado con éxito', res['message']);
+              this.getAll();
+              // setTimeout(() => {this.router.navigate(['login'])}, 2500);
+            },
+            (error: HttpErrorResponse) => {
+              this.notification.error('Problema al crear el producto', error['error']['message']);
+            }
+          )
+      }
       this.validateForm.reset();
     }
   }
