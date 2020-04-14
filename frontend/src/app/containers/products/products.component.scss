@@ -3,7 +3,12 @@
    grid-template-rows: 20% 20% 20% 20% 20%;
    grid-template-columns: 20% 20% 20% 20% 20%;
    margin: 3%;
+   grid-row-gap: 135px;
 }
 nz-card{
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    height: 350px;
+}
+img{
+    height:238px;
 }

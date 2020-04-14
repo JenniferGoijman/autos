@@ -1,26 +1,48 @@
-<p>register works!</p>
 <div class="container">
-<div nz-row [nzGutter]="8">
-    <div nz-col [nzSpan]="12">
-      <input nz-input formControlName="captcha" id="captcha"/>
-    </div>
-    <div nz-col [nzSpan]="12">
-      <button nz-button (click)="getCaptcha($event)">Get captcha</button>
-    </div>
-  </div>
-</nz-form-control>
-</nz-form-item>
-<nz-form-item nz-row class="register-area">
-<nz-form-control [nzSpan]="14" [nzOffset]="6">
-  <label nz-checkbox formControlName="agree">
-    <span>I have read the <a>agreement</a></span>
-  </label>
-</nz-form-control>
-</nz-form-item>
-<nz-form-item nz-row class="register-area">
-<nz-form-control [nzSpan]="14" [nzOffset]="6">
-  <button nz-button nzType="primary">Register</button>
-</nz-form-control>
-</nz-form-item>
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name" nzRequired>
+      <span>
+        Name
+      </span>
+    </nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your name!">
+      <input nz-input id="name" formControlName="name" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+      <input nz-input formControlName="email" id="email" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>Password</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your password!">
+      <input
+        nz-input
+        type="password"
+        id="password"
+        formControlName="password"
+        (ngModelChange)="updateConfirmValidator()"
+      />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item nz-row class="register-area">
+    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <label nz-checkbox formControlName="agree">
+        <span>I have read the <a>agreement</a></span>
+      </label>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item nz-row class="register-area">
+    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <button nz-button nzType="primary">Register</button>
+    </nz-form-control>
+  </nz-form-item>
 </form>
+{{this.validateForm.value | json}}
 </div>
