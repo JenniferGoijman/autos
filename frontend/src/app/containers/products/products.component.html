@@ -1,11 +1,11 @@
 <div class="contenido">
 <div *ngFor="let product of products">
 <nz-card nzHoverable style="width:240px" [nzCover]="coverTemplate">
-    <nz-card-meta nzTitle="{{product.name}}" nzDescription="www.instagram.com"></nz-card-meta>
+    <nz-card-meta nzTitle="{{product.name}}" nzDescription="{{product.price}}€"></nz-card-meta>
   </nz-card>
   <ng-template #coverTemplate>
-    <img alt="example" src="{{product.image}}" />
+    <img alt="{{product.name}}" src="{{product.image}}" />
   </ng-template>
 </div>
-  {{this.products| json}}ç
+  {{this.products| json}}
   </div>
