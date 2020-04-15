@@ -16,6 +16,7 @@ import es from '@angular/common/locales/es';
 import { AdminProductsComponent } from './containers/admin-products/admin-products.component';
 import { AdminCategoriesComponent } from './containers/admin-categories/admin-categories.component';
 import { ProductsComponent } from './containers/products/products.component';
+import { AdminOrdersComponent } from './containers/admin-orders/admin-orders.component';
 
 registerLocaleData(es);
 
@@ -28,7 +29,8 @@ registerLocaleData(es);
     RegisterComponent,
     AdminProductsComponent,
     AdminCategoriesComponent,
-    ProductsComponent
+    ProductsComponent,
+    AdminOrdersComponent
   ],
   imports: [
     BrowserModule,

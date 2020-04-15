@@ -1,0 +1,16 @@
+<p>admin-orders works!</p>
+<div class="container">
+    <div class="table">
+        <nz-table #basicTable [nzData]="orders">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of orders">
+                    <td>{{ order.name }}</td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </div>

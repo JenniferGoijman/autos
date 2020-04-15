@@ -16,10 +16,8 @@ export class AdminCategoriesComponent implements OnInit {
   public validateForm: FormGroup;
   public router: Router;
   public message: string;
-  constructor(public categoryService: CategoryService,
-    private fb: FormBuilder,
-    private notification: NzNotificationService
-  ) { }
+
+  constructor(public categoryService: CategoryService,private fb: FormBuilder,private notification: NzNotificationService) { }
 
   ngOnInit(): void {
     this.getAll()

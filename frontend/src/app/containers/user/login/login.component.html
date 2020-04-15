@@ -2,17 +2,16 @@
   <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
     <h1>Iniciar sesión</h1>
     <nz-form-item>
-      <nz-form-control nzErrorTip="Ingrese su nombre de usuario!">
-        <nz-input-group nzPrefixIcon="user">
-          <input type="text" nz-input formControlName="userName" placeholder="Username" />
-        </nz-input-group>
+     
+      <nz-form-control  nzErrorTip="The input is not valid E-mail!">
+        <input nz-input formControlName="email" id="email" placeholder="E-mail"/>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
       <nz-form-control nzErrorTip="Ingrese su contraseña!">
-        <nz-input-group nzPrefixIcon="lock">
+        
           <input type="password" nz-input formControlName="password" placeholder="Password" />
-        </nz-input-group>
+       
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>

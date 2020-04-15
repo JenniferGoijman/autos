@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators, NgForm } from '@angula
 import { UserService } from 'src/app/services/user.service';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-register',
@@ -21,17 +22,17 @@ export class RegisterComponent implements OnInit {
     }
       if(this.validateForm.valid){
         const user =this.validateForm.value;
-        this.userService.signup(user)
+        this.userService.register(user)
         .subscribe(
           (res:HttpResponse<object>)=>{
-            this.successMsg=res['message'];
+            this.notification.success('Usuario creado con éxito', res['message']);
             setTimeout(() => {
               this.router.navigate(['login'])
-            }, 2000);
+            }, 3000);
           },
           (error:HttpErrorResponse)=>{
-            this.errorMsg=error['error']['message'];
-            setTimeout(() =>  this.errorMsg="" , 2000);
+            this.notification.error('Problema al registrar el usuario', error['error']['message']);
+            setTimeout(() =>  this.errorMsg="" , 3000);
           }
         )
     }
@@ -58,7 +59,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public userService: UserService,
-    public router:Router
+    public router:Router,
+    private notification: NzNotificationService
     ) {}
 
   ngOnInit(): void {
