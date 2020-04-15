@@ -27,6 +27,9 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (res:HttpResponse<object>)=>{
           this.notification.success('Usuario logueado con éxito', res['message']);
+          this.userService.setUser(res['user']);
+          this.userService.setToken(res['token']);
+          localStorage.setItem('authToken', res['token']);
           setTimeout(() => {
             this.router.navigate(['products'])
           }, 3000);

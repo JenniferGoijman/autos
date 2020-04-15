@@ -12,6 +12,9 @@ export class AdminOrdersComponent implements OnInit {
   public orders;
   public validateForm: FormGroup;
   public router: Router;
+  public date;
+  public status;
+  public UserId;
 
   constructor(public orderService: OrderService,private fb: FormBuilder) { }
 
@@ -19,7 +22,7 @@ export class AdminOrdersComponent implements OnInit {
     this.getAll()
 
     this.validateForm = this.fb.group({
-      name: [null, [Validators.required]],
+      date: [null, [Validators.required]],
     });
   }
 

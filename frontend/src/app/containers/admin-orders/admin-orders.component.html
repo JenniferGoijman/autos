@@ -4,12 +4,18 @@
         <nz-table #basicTable [nzData]="orders">
             <thead>
                 <tr>
-                    <th>Nombre</th>
+                    <th>Nº</th>
+                    <th>Fecha</th>
+                    <th>Estado</th>
+                    <th>Usuario</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let order of orders">
-                    <td>{{ order.name }}</td>
+                    <td>{{ order.id }}</td>
+                    <td>{{order.date | date:"dd/MM/yyyy"}}</td>
+                    <td>{{ order.status }}</td>
+                    <td>{{ order.UserId }}</td>
                 </tr>
             </tbody>
         </nz-table>

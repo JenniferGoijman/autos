@@ -54,7 +54,7 @@ const OrderController = {
             })
             .catch(err => {
                 console.log(err)
-                res.send({
+                res.status(500).send({
                     message: 'Hubo un problema para crear el pedido'
                 })
             })

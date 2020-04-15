@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NzFormModule } from 'ng-zorro-antd/form';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,9 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public userService:UserService,
+  ) { }
 
   ngOnInit(): void {
   }

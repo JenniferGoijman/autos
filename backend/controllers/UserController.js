@@ -14,7 +14,7 @@ const UserController = {
         try {
             const password = await bcrypt.hash(req.body.password, 9);
             const user = await User.create({
-                username: req.body.username,
+                name: req.body.name,
                 email: req.body.email,
                 password,
                 role: 'customer'
@@ -34,19 +34,19 @@ const UserController = {
         try {
             const user = await User.findOne({
                 where: {
-                    username: req.body.username
+                    email: req.body.email
                 }
             })
             console.log(user);
             if (!user) {
                 return res.status(400).send({
-                    message: 'Usuario o contraseña incorrectas'
+                    message: 'Email o contraseña incorrectas'
                 })
             }
             const isMatch = await bcrypt.compare(req.body.password, user.password);
             if (!isMatch) {
                 return res.status(400).send({
-                    message: 'Usuario o contraseña incorrectas'
+                    message: 'Email o contraseña incorrectas'
                 })
             }
             const token = jwt.sign({
@@ -58,7 +58,7 @@ const UserController = {
             });
             //status es 200 by default
             res.send({
-                message: 'Bienvenid@ ' + user.username,
+                message: 'Bienvenid@ ' + user.name,
                 user,
                 token
             })
